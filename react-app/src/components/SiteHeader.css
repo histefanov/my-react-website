@@ -1,5 +1,16 @@
+.header {
+    padding: var(--padding-s-rem) var(--padding-l-rem);
+    background-color: var(--clr-accent-500);
+    font-family: var(--font-family-primary);
+    font-weight: 500;
+}
+
 .nav__list {
     display: flex;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 3rem;
+}
+
+.nav__link {
+    color: var(--clr-neutral-100);
 }

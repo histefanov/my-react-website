@@ -12,8 +12,8 @@ function App() {
         <SiteHeader />
         <Routes>
           <Route exact path="/" element={<Homepage />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/posts/:id" element={<PostDetails />} />
+          <Route path="/articles" element={<Posts />} />
+          <Route path="/articles/:id" element={<PostDetails />} />
         </Routes>
       </Router>
     </div>

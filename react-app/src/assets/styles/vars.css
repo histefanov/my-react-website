@@ -1,0 +1,40 @@
+:root {
+    --font-family-accent: 'Oswald', sans-serif;
+    --font-family-primary: 'Montserrat', sans-serif;
+
+    --clr-accent-200: hsl(38.8, 100%, 70%);
+    --clr-accent-300: hsl(38.8, 100%, 60%);
+    --clr-accent-400: hsl(38.8, 100%, 50%);
+    --clr-accent-500: hsl(38.8, 100%, 40%);
+    --clr-accent-600: hsl(38.8, 100%, 30%);
+    --clr-accent-700: hsl(38.8, 100%, 20%);
+    --clr-accent-800: hsl(38.8, 100%, 10%);
+
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-400: hsl(0, 0%, 50%);
+    --clr-neutral-900: hsl(0, 0%, 0%);
+
+    --padding-xs-rem: 1rem;
+    --padding-s-rem: 2rem;
+    --padding-m-rem: 3rem;
+    --padding-l-rem: 4rem;
+    --padding-xl-rem: 5rem;
+
+    --padding-xs: 1em;
+    --padding-s: 2em;
+    --padding-m: 3em;
+    --padding-l: 4em;
+    --padding-xl: 5em;
+
+    --margin-xs-rem: 1rem;
+    --margin-s-rem: 2rem;
+    --margin-m-rem: 3rem;
+    --margin-l-rem: 4rem;
+    --margin-xl-rem: 5rem;
+
+    --margin-xs: 1em;
+    --margin-s: 2em;
+    --margin-m: 3em;
+    --margin-l: 4em;
+    --margin-xl: 5em;
+}

@@ -8,13 +8,13 @@ export default function SiteHeader() {
             <nav className="nav">
                 <ul className="nav__list">
                     <li className="nav__item">
-                        <Link className="nav__link" to="/">Home</Link>
+                        <Link className="nav__link link--neutral" to="/">Home</Link>
                     </li>
                     <li className="nav__item">
-                        <Link className="nav__link" to="/posts">Posts</Link>
+                        <Link className="nav__link link--neutral" to="/articles">Posts</Link>
                     </li>
                     <li className="nav__item">
-                        <Link className="nav__link" to="/posts/:id">Post Details</Link>
+                        <Link className="nav__link link--neutral" to="/articles/:id">Post Details</Link>
                     </li>
                 </ul>
             </nav>
