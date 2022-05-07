@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom'
 import { gql, useQuery } from '@apollo/client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,8 +22,27 @@ const CATEGORIES = gql`
 `
 
 export default function SiteHeader() {
+    const location = useLocation();
+    const ref = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const { loading, error, data } = useQuery(CATEGORIES);
+
+    useEffect(() => {
+        setIsOpen(false);
+        const handler = (event) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handler);
+        document.addEventListener("touchstart", handler);
+
+        return () => {
+            // Cleanup the event listener
+            document.removeEventListener("mousedown", handler);
+            document.removeEventListener("touchstart", handler);
+        };
+    }, [location])
 
     // TODO: add loading component
 
@@ -52,7 +71,7 @@ export default function SiteHeader() {
                             <FontAwesomeIcon className="nav__dropdown-btn pointer" icon={solid('angle-down')} onClick={() => setIsOpen(!isOpen)} />
                         </div>
                         {isOpen &&
-                            <div className="nav__dropdown">
+                            <div className="nav__dropdown" ref={ref}>
                                 <ul className="dropdown__list">
                                     {categories.map(({ id, attributes }) => (
                                         <li key={id} className="dropdown__item">

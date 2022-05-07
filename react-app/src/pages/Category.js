@@ -1,6 +1,7 @@
 import React from 'react'
 import { gql, useQuery } from '@apollo/client'
 import { useParams } from 'react-router-dom'
+import ArticleCard from '../components/article-card/ArticleCard'
 
 const CATEGORY = gql`
     query GetCategory($id: ID!) {
@@ -15,7 +16,15 @@ const CATEGORY = gql`
                             attributes {
                                 title,
                                 body,
-                                createdAt
+                                createdAt,
+                                categories {
+                                    data {
+                                        id,
+                                        attributes {
+                                            name
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -43,7 +52,20 @@ export default function Category() {
         return <p>Error</p>
     }
 
+    const { attributes } = data.category.data;
+
     return (
-        <div>Category</div>
+        <>
+            <h2>{attributes.name}</h2>
+            {attributes.articles.data.map(({ id, attributes }) => {
+                const props = {
+                    id,
+                    title: attributes.title,
+                    body: attributes.body,
+                    categories: attributes.categories.data
+                };
+                return <ArticleCard key={id} {...props} />
+            })}
+        </>
     )
 }

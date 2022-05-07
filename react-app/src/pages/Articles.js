@@ -2,6 +2,7 @@ import React from 'react';
 // import useFetch from '../hooks/useFetch'
 import { Link } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
+import ArticleCard from '../components/article-card/ArticleCard';
 
 const ARTICLES = gql`
     query GetArticles {
@@ -44,18 +45,21 @@ export default function Posts() {
     }
 
     // TODO: create card component
-    ;
+
     const articles = data.articles.data;
 
     return (
-        <div>
-            {articles.map(({ id, attributes }) => (
-                <div key={id} style={{ marginBottom: 2 + 'rem' }}>
-                    <h2>{attributes.title}</h2>
-                    <p>{attributes.body.substring(0, 200)}...</p>
-                    <Link to={`./${id}`}>Read more</Link>
-                </div>
-            ))}
-        </div>
+        <>
+            {articles.map(({ id, attributes }) => {
+                const article = {
+                    id,
+                    title: attributes.title,
+                    body: attributes.body,
+                    categories: attributes.categories.data
+                }
+
+                return <ArticleCard key={id} {...article} />;
+            })}
+        </>
     )
 }
