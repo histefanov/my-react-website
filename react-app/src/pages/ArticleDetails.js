@@ -1,10 +1,31 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import useFetch from '../hooks/useFetch';
+import { gql, useQuery } from '@apollo/client';
+// import useFetch from '../hooks/useFetch';
+
+const ARTICLE = gql`
+    query GetArticle($id: ID!) {
+        article(id: $id) {
+            data {
+                id,
+                attributes {
+                    title,
+                    body,
+                    createdAt
+                }
+            }
+        }
+    }
+`
 
 export default function PostDetails() {
     const { id } = useParams();
-    const { loading, error, data } = useFetch(`http://localhost:1337/api/articles/${id}`);
+    // const { loading, error, data } = useFetch(`http://localhost:1337/api/articles/${id}`);
+    const { loading, error, data } = useQuery(ARTICLE, {
+        variables: {
+            id: id
+        }
+    });
 
     // TODO: add loading component
 
@@ -18,7 +39,7 @@ export default function PostDetails() {
         return <p>Error</p>
     }
 
-    const { attributes } = data.data;
+    const { attributes } = data.article.data;
 
     return (
         <div>

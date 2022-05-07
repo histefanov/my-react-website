@@ -2,3 +2,17 @@
     text-decoration: underline;
     color: hsl(236, 96%, 47%);
 }
+
+.text-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.relative {
+    position: relative;
+}

@@ -11,6 +11,22 @@
     gap: 3rem;
 }
 
+.nav__item,
 .nav__link {
     color: var(--clr-neutral-100);
+}
+
+
+.nav__dropdown {
+    left: 70px;
+    top: 25px;
+    position: absolute;
+    background-color: var(--clr-accent-800);
+}
+
+.dropdown__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: var(--padding-xs-rem);
 }
