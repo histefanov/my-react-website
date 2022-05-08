@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { gql, useQuery } from '@apollo/client';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 // import useFetch from '../hooks/useFetch';
 
 const ARTICLE = gql`
@@ -44,7 +45,7 @@ export default function PostDetails() {
     return (
         <div>
             <h2>{attributes.title}</h2>
-            <p>{attributes.body}</p>
+            <ReactMarkdown>{attributes.body}</ReactMarkdown>
             <p>{attributes.publishedAt}</p>
         </div>
     )

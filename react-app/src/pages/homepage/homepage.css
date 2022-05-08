@@ -1,0 +1,14 @@
+.hero {
+    padding: var(--padding-s) var(--padding-m);
+}
+
+h1,
+h2 {
+    font-family: var(--font-family-accent);
+    font-size: 2rem;
+    margin: 1em 0;
+}
+
+p {
+    font-family: var(--font-family-primary);
+}

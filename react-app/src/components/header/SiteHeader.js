@@ -2,9 +2,22 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom'
 import { gql, useQuery } from '@apollo/client';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+
+import {
+    Menu,
+    MenuList,
+    MenuButton,
+    MenuItem,
+    MenuItems,
+    MenuPopover,
+    MenuLink,
+} from "@reach/menu-button";
+import "@reach/menu-button/styles.css";
 
 import './SiteHeader.css';
 
@@ -22,6 +35,8 @@ const CATEGORIES = gql`
 `
 
 export default function SiteHeader() {
+    const { t } = useTranslation();
+
     const location = useLocation();
     const ref = useRef();
     const [isOpen, setIsOpen] = useState(false);
@@ -63,11 +78,11 @@ export default function SiteHeader() {
             <nav className="nav">
                 <ul className="nav__list">
                     <li className="nav__item">
-                        <Link className="nav__link link--neutral" to="/">Home</Link>
+                        <Link className="nav__link link--neutral" to="/">{t("Home")}</Link>
                     </li>
                     <li className="nav__item relative">
                         <div className="text-with-icon">
-                            <Link className="nav__link link--neutral" to="/articles">Articles</Link>
+                            <Link className="nav__link link--neutral" to="/articles">{t("Articles")}</Link>
                             <FontAwesomeIcon className="nav__dropdown-btn pointer" icon={solid('angle-down')} onClick={() => setIsOpen(!isOpen)} />
                         </div>
                         {isOpen &&
@@ -81,9 +96,17 @@ export default function SiteHeader() {
                                 </ul>
                             </div>}
                     </li>
-                    {/* <li className="nav__item">
-                        <Link className="nav__link link--neutral" to="/articles/:id">Post Details</Link>
-                    </li> */}
+                    <li className="nav__item">
+                        <Menu>
+                            <MenuButton>
+                                <FontAwesomeIcon icon={solid('globe')} />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem onClick={() => i18next.changeLanguage('en')}>English</MenuItem>
+                                <MenuItem onClick={() => i18next.changeLanguage('bg')}>Български</MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </li>
                 </ul>
             </nav>
         </header>
