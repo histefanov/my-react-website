@@ -36,6 +36,13 @@ const CATEGORIES = gql`
 
 export default function SiteHeader() {
     const { t } = useTranslation();
+    const changeLanguage = (nextLanguage) => {
+        const routes = i18n.getResourceBundle(i18n.language, 'routes');
+        const currentPathname = window.location.pathname.replace(/\/+$/, '');
+        const currentRouteKey = Object.keys(routes).find((key) => routes[key] === currentPathname);
+    
+        window.location.replace(t(`routes:${currentRouteKey}`, { lng: nextLanguage }));
+      };
 
     const location = useLocation();
     const ref = useRef();

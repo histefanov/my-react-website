@@ -19,7 +19,7 @@ function App() {
         <ApolloProvider client={client}>
           <SiteHeader />
           <Routes>
-            <Route exact path="/" element={<Homepage />} />
+            <Route exact path={"/"} element={<Homepage />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articles/:id" element={<ArticleDetails />} />
             <Route path="/categories/:id" element={<Category />} />
